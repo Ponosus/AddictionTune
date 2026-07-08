@@ -25,7 +25,7 @@ Installing
    ```bash
    pip install pyinstaller
 
-   Download or locate a standard 64-bit installation of VLC Media Player on your machine (usually found at C:\Program Files\VideoLAN\VLC).
+Download or locate a standard 64-bit installation of VLC Media Player on your machine (usually found at C:\Program Files\VideoLAN\VLC).
 
 2. Asset Preparation
 Before compiling, copy the following files and folders from your VLC installation directory directly into your project's root folder (where your main.py is located):
@@ -44,4 +44,6 @@ YourProject/
 Build Command
 Open your terminal or command prompt in the project root directory and execute the following command:
 
-command for compiling: pyinstaller --noconfirm --onedir --windowed --add-data "libvlc.dll;." --add-data "libvlccore.dll;." --add-data "plugins;plugins" "Addiction.py"
+command for compiling:
+```bash
+pyinstaller --noconfirm --onedir --windowed --add-data "libvlc.dll;." --add-data "libvlccore.dll;." --add-data "plugins;plugins" "Addiction.py"
