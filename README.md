@@ -37,11 +37,15 @@ plugins (this directory contains necessary audio codecs)
 Your project structure should look like this before building:
 
 YourProject/
+
 ├── main.py
+
 ├── libvlc.dll
+
 ├── libvlccore.dll
-└── plugins/
-Build Command
+
+└── plugins
+Compiling Command
 Open your terminal or command prompt in the project root directory and execute the following command:
 
 command for compiling:
