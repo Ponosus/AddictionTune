@@ -55,13 +55,21 @@ The `publish` folder will contain `AddictionTune.exe` with everything bundled �
 ​
 AddictionTune/
 ├── AddictionTune.csproj
+
 ├── App.xaml / App.xaml.cs        # theme management
+
 ├── MainWindow.xaml(.cs)          # all pages, player, mini-player
+
 ├── Models/                       # Track, Preset
+
 ├── Services/                     # AudioEngine, YtDlpService, UpdateChecker,
+
 │                                 # Localization, ConfigStore
+
 ├── Themes/                       # Dark / Light dictionaries, control styles
+
 ├── Assets/                       # icons
+
 └── yt-dlp.exe                    # bundled stream resolver
 
 ## Author
