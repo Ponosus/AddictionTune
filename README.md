@@ -1,53 +1,42 @@
 # AddictionTune
 
-AddictionTune is a minimalistic desktop audio player built with Python, CustomTkinter, and VLC. It features curated audio atmospheres designed for different mental states (Active, Focus, Relax) and utilizes an embedded mini-player with complete media and volume controls for a seamless background listening experience.
+**AddictionTune** is a minimalist, zero-distraction desktop audio player designed for ADHD and neurodivergent listeners. Instead of endless libraries and playlists, it offers three curated audio atmospheres matched to mental states — press one button and the right sound just plays. No accounts, no ads, no doomscrolling through recommendations.
+
+Built with **C# / WPF (.NET 8)**, **LibVLCSharp**, and **yt-dlp**.
+
+## Why
+
+For many neurodivergent people, the hardest part of listening to music is *choosing* it. Every decision point is a distraction trap. AddictionTune removes the choice: pick a mental state, get a shuffled stream of the right genre, and get back to what you were doing. The sticky mini-player keeps controls one glance away without stealing focus.
+
+## Atmospheres
+
+| Preset | Genres | Mental state |
+| --- | --- | --- |
+| 🔴 **ACTIVE** | Breakcore / Jungle | High-energy stimulation, dopamine boost |
+| 🔵 **FOCUS** | Maidcore | Steady rhythm for deep work and studying |
+| 🟢 **RELAX** | Ambient / Lo-Fi | Decompression and sensory calm |
 
 ## Features
 
-* **Mood-Based Presets:** Quick access to tailored audio streams (Breakcore/Jungle, Maidcore, Ambient/Lo-Fi).
-* **Dual-UI Layout:** Full-screen detailed player and a compact sticky mini-player.
-* **Synchronized Controls:** Real-time volume and playback synchronization between both player views.
-* **Asynchronous Streaming:** Powered by `yt_dlp` and `python-vlc` for fast, non-blocking audio loading and playback.
-* **Onboarding Screen:** A built-in user guide for first-time launches (can be re-accessed at any time).
-* **Dynamic Theme Toggle:** Support for both Light and Dark modes.
+- **One-click mood presets** — three curated atmospheres, shuffled on every launch.
+- **Dual-UI layout** — a full-screen player plus a compact sticky mini-player that stays out of your way.
+- **Resizable mini-player** — drag its edges to make it wider or narrower (within sane limits).
+- **Gapless-feeling playback** — the next track's stream URL is prefetched in the background, so auto-advance and skipping are near-instant.
+- **Stutter-resistant streaming** — 3-second network buffer and automatic HTTP reconnect.
+- **Click-to-seek progress bar** — click anywhere on the timeline to jump straight to that timecode.
+- **Synchronized controls** — playback and volume stay in sync between the full player and the mini-player.
+- **3 languages** — English, Russian, and Spanish. Picked once on first launch, changeable anytime in Settings.
+- **Light & dark themes** — with theme-aware icons.
+- **Settings menu** — ⚙ button with Info (onboarding replay), Language, and About pages.
+- **Self-maintaining** — yt-dlp auto-updates itself on launch, and the app notifies you when a newer VLC runtime is available.
+- **Fully self-contained builds** — one `dotnet publish` produces a folder with everything bundled: .NET runtime, LibVLC, and yt-dlp. No installers, no dependencies.
 
----
+## Tech stack
 
-## Compilation Guide
+- **.NET 8 / WPF** — native Windows UI with smooth page-transition animations
+- **LibVLCSharp + VideoLAN.LibVLC.Windows** — rock-solid audio engine, codecs included
+- **yt-dlp** — audio stream resolution (bundled, self-updating)
 
-To compile this Python script into a standalone executable (`.exe`) for Windows, follow the instructions below. 
+## Building from source
 
-Because the application relies on the external VLC media framework (`libvlc.dll`), you must bundle the required binary assets alongside the compiled folder for the application to start properly.
-
-Installing
-
-1. Install PyInstaller via your terminal:
-   ```bash
-   pip install pyinstaller
-
-Download or locate a standard 64-bit installation of VLC Media Player on your machine (usually found at C:\Program Files\VideoLAN\VLC).
-
-2. Asset Preparation
-Before compiling, copy the following files and folders from your VLC installation directory directly into your project's root folder (where your main.py is located):
-
-libvlc.dll
-libvlccore.dll
-plugins (this directory contains necessary audio codecs)
-
-Your project structure should look like this before building:
-
-YourProject/
-
-├── main.py
-
-├── libvlc.dll
-
-├── libvlccore.dll
-
-└── plugins
-Compiling Command
-Open your terminal or command prompt in the project root directory and execute the following command:
-
-command for compiling:
-```bash
-pyinstaller --noconfirm --onedir --windowed --add-data "libvlc.dll;." --add-data "libvlccore.dll;." --add-data "plugins;plugins" "Addiction.py"
+Requirements: **Windows 10/11**, **.NET 8 SDK**.
