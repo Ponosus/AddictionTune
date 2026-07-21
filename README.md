@@ -74,7 +74,7 @@ AddictionTune/
 
 ## Author
 
-Made by **Sewerkox**
+Made by **Sewerbox**
 
 - GitHub: [github.com/Ponosus](https://github.com/Ponosus/)
 - Telegram: [@VestronVulture](https://t.me/VestronVulture)
