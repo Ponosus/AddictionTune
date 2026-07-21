@@ -43,7 +43,9 @@ Requirements: **Windows 10/11**, **.NET 8 SDK**.
 
 ​
 git clone https://github.com/Ponosus/AddictionTune.git
+
 cd AddictionTune/AddictionTune
+
 dotnet publish -c Release -r win-x64 --self-contained true -o publish
 
 The `publish` folder will contain `AddictionTune.exe` with everything bundled — the .NET runtime, LibVLC binaries, and `yt-dlp.exe`. Copy the folder anywhere and run.
@@ -73,7 +75,7 @@ AddictionTune/
 
 ## Author
 
-Made by **bublik (Ponosus)**
+Made by **Ponosus**
 
 - GitHub: [github.com/Ponosus](https://github.com/Ponosus/)
 - Telegram: [@VestronVulture](https://t.me/VestronVulture)
