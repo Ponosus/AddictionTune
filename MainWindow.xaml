@@ -1,0 +1,208 @@
+<Window x:Class="AddictionTune.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddictionTune"
+        Icon="/Assets/icon.ico"
+        Width="900" Height="800" MinWidth="800" MinHeight="700"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Century Gothic, Segoe UI"
+        Background="{DynamicResource WindowBackground}"
+        Closed="OnWindowClosed">
+    <Grid>
+
+        <!-- Экран 0: выбор языка (только при первом запуске или из настроек) -->
+        <Grid x:Name="LanguagePage">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="AddictionTune" FontSize="55" FontWeight="Bold"
+                           Foreground="{DynamicResource TextPrimary}" HorizontalAlignment="Center"/>
+                <TextBlock Text="Язык / Language / Idioma" FontSize="16" Margin="0,18,0,40"
+                           Foreground="{DynamicResource TextSecondary}" HorizontalAlignment="Center"/>
+                <Button Content="Русский" Tag="ru" FontSize="20" Width="280" Height="52" Margin="0,7"
+                        Style="{StaticResource AccentButton}" Click="OnLanguageClick"/>
+                <Button Content="English" Tag="en" FontSize="20" Width="280" Height="52" Margin="0,7"
+                        Style="{StaticResource AccentButton}" Click="OnLanguageClick"/>
+                <Button Content="Español" Tag="es" FontSize="20" Width="280" Height="52" Margin="0,7"
+                        Style="{StaticResource AccentButton}" Click="OnLanguageClick"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Экран 1: главный -->
+        <Grid x:Name="HomePage" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="AddictionTune" FontSize="70" FontWeight="Bold"
+                           Foreground="{DynamicResource TextPrimary}" HorizontalAlignment="Center"/>
+                <Button x:Name="EnterFlowButton" Content="Войти в поток" FontSize="22" Width="320" Height="60" Margin="0,70,0,0"
+                        Style="{StaticResource AccentButton}" Click="OnEnterFlowClick"/>
+                <!-- Сюда выводится сообщение о доступном обновлении VLC -->
+                <TextBlock x:Name="UpdateText" FontSize="13" Margin="0,30,0,0" MaxWidth="560"
+                           TextAlignment="Center" TextWrapping="Wrap"
+                           Foreground="{DynamicResource TextSecondary}"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Экран 2: онбординг по жанрам (один экран, содержимое меняется по шагам) -->
+        <Grid x:Name="OnboardingPage" Visibility="Collapsed">
+            <StackPanel x:Name="OnbPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Width="620">
+                <TextBlock x:Name="OnbTitle" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="OnbDescription" FontSize="20" TextAlignment="Center" TextWrapping="Wrap"
+                           Margin="0,45,0,0" Foreground="{DynamicResource TextPrimary}"/>
+                <Button x:Name="OnbNextButton" Content="Далее" Width="200" Height="50" Margin="0,60,0,0" FontSize="18"
+                        Style="{StaticResource AccentButton}" Click="OnOnboardingNextClick"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Экран 3: об авторе / ссылки (финал онбординга и пункт настроек) -->
+        <Grid x:Name="LinksPage" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="LinksTitle" Text="Об авторе" FontSize="40" FontWeight="Bold" Margin="0,0,0,14"
+                           HorizontalAlignment="Center" Foreground="{DynamicResource TextPrimary}"/>
+                <TextBlock x:Name="AuthorText" Text="Автор: bublik (Ponosus)" FontSize="18" Margin="0,0,0,40"
+                           HorizontalAlignment="Center" Foreground="{DynamicResource TextSecondary}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="{DynamicResource GithubIcon}" Width="30" Height="30" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                    <Button Content="github.com/Ponosus/" FontSize="22" Padding="6,4"
+                            Style="{StaticResource GhostButton}" Click="OnGithubClick" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Image Source="/Assets/telegram.png" Width="30" Height="30" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                    <Button Content="@VestronVulture" FontSize="22" Padding="6,4"
+                            Style="{StaticResource GhostButton}" Click="OnTelegramClick" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock x:Name="EnjoyText" Text="Приятного пользования!" FontSize="26" FontWeight="Bold" Margin="0,50,0,0"
+                           HorizontalAlignment="Center" Foreground="{DynamicResource TextPrimary}"/>
+                <Button x:Name="LinksStartButton" Content="Поехали" Width="200" Height="50" Margin="0,55,0,0" FontSize="18"
+                        Style="{StaticResource AccentButton}" Click="OnLinksStartClick"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Экран 4: выбор атмосферы -->
+        <Grid x:Name="PresetsPage" Visibility="Collapsed">
+            <Button Content="←" FontSize="30" FontWeight="Bold" Width="50" Height="50" Margin="30"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Style="{StaticResource GhostButton}" Click="OnBackToHomeClick"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="AtmosphereTitle" Text="атмосфера:" FontSize="38" FontWeight="Bold" Margin="0,0,0,25"
+                           Foreground="{DynamicResource TextPrimary}" HorizontalAlignment="Center"/>
+                <!-- Кнопки пресетов генерируются в коде из Presets.All -->
+                <StackPanel x:Name="PresetsPanel"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Экран 5: плеер -->
+        <Grid x:Name="PlayerPage" Visibility="Collapsed">
+            <Button Content="←" FontSize="30" FontWeight="Bold" Width="50" Height="50" Margin="30"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Style="{StaticResource GhostButton}" Click="OnBackToPresetsClick"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="700">
+                <TextBlock x:Name="TrackTitleText" Text="..." FontSize="28" FontWeight="Bold"
+                           TextWrapping="Wrap" TextAlignment="Center"
+                           Foreground="{DynamicResource TextPrimary}"/>
+                <TextBlock x:Name="ArtistText" FontSize="18" TextAlignment="Center" Margin="0,12,0,0"
+                           Foreground="{DynamicResource TextSecondary}"/>
+
+                <!-- Прогресс трека: клик по дорожке = перемотка на этот тайм-код -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,35,0,0">
+                    <TextBlock x:Name="CurrentTimeText" Text="0:00" FontSize="12" VerticalAlignment="Center"
+                               Foreground="{DynamicResource TextPrimary}"/>
+                    <Slider x:Name="ProgressSlider" Width="400" Maximum="100" Margin="12,0" VerticalAlignment="Center"
+                            Style="{StaticResource ModernSlider}"
+                            Thumb.DragStarted="OnSeekDragStarted" Thumb.DragCompleted="OnSeekDragCompleted"
+                            PreviewMouseLeftButtonUp="OnSeekPreviewMouseUp"/>
+                    <TextBlock x:Name="TotalTimeText" Text="0:00" FontSize="12" VerticalAlignment="Center"
+                               Foreground="{DynamicResource TextPrimary}"/>
+                </StackPanel>
+
+                <!-- Управление -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,35,0,0">
+                    <Button Content="⏮" FontSize="35" Width="60" Height="60" Margin="45,0"
+                            Style="{StaticResource GhostButton}" Click="OnPrevClick"/>
+                    <Button x:Name="PlayButton" Content="▶" FontSize="30" Width="90" Height="90" Margin="45,0"
+                            Style="{StaticResource RoundAccentButton}" Click="OnPlayPauseClick"/>
+                    <Button Content="⏭" FontSize="35" Width="60" Height="60" Margin="45,0"
+                            Style="{StaticResource GhostButton}" Click="OnNextClick"/>
+                </StackPanel>
+
+                <!-- Громкость -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,40,0,0">
+                    <TextBlock Text="🔈" FontSize="16" VerticalAlignment="Center"
+                               Foreground="{DynamicResource TextPrimary}"/>
+                    <Slider x:Name="VolumeSlider" Width="250" Maximum="240" Margin="12,0" VerticalAlignment="Center"
+                            Style="{StaticResource ModernSlider}" ValueChanged="OnVolumeChanged"/>
+                    <TextBlock Text="🔊" FontSize="16" VerticalAlignment="Center"
+                               Foreground="{DynamicResource TextPrimary}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Верхние кнопки (только на главном экране) -->
+        <Button x:Name="ThemeButton" Content="🌙" FontSize="20" Width="40" Height="40" Margin="20"
+                HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Collapsed"
+                Style="{StaticResource GhostButton}" Click="OnThemeClick"/>
+        <Button x:Name="SettingsButton" Content="⚙" FontSize="22" Width="40" Height="40" Margin="20"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"
+                Style="{StaticResource GhostButton}" Click="OnSettingsClick">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="MenuInfo" Header="Информация" Click="OnMenuInfoClick"/>
+                    <MenuItem x:Name="MenuLanguage" Header="Язык" Click="OnMenuLanguageClick"/>
+                    <MenuItem x:Name="MenuAbout" Header="Об авторе" Click="OnMenuAboutClick"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+
+        <!-- Мини-плеер (ширину можно тянуть за левый/правый край в пределах лимитов) -->
+        <Border x:Name="MiniBar" Width="680" Height="75" CornerRadius="20" Margin="0,0,0,25"
+                Background="{DynamicResource MiniBarBackground}"
+                BorderBrush="{StaticResource AccentBrush}" BorderThickness="1"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Grid>
+                <Grid Margin="18,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="190"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="MiniTrackButton" Grid.Column="0" Content="..." FontSize="11" FontWeight="Bold"
+                            HorizontalContentAlignment="Left" Padding="8,0"
+                            Style="{StaticResource GhostButton}" Click="OnMiniTrackClick"/>
+                    <Button Grid.Column="1" Content="⏮" FontSize="18" Width="34" Height="34" Margin="8,0"
+                            Style="{StaticResource GhostButton}" Click="OnPrevClick"/>
+                    <Button x:Name="MiniPlayButton" Grid.Column="2" Content="▶" FontSize="16" Width="40" Height="40" Margin="8,0"
+                            Style="{StaticResource SmallRoundAccentButton}" Click="OnPlayPauseClick"/>
+                    <Button Grid.Column="3" Content="⏭" FontSize="18" Width="34" Height="34" Margin="8,0"
+                            Style="{StaticResource GhostButton}" Click="OnNextClick"/>
+                    <TextBlock Grid.Column="4" Text="🔈" FontSize="12" VerticalAlignment="Center" Margin="14,0,6,0"
+                               Foreground="{DynamicResource TextPrimary}"/>
+                    <Slider x:Name="MiniVolumeSlider" Grid.Column="5" Width="120" Maximum="240" VerticalAlignment="Center"
+                            Style="{StaticResource ModernSlider}" ValueChanged="OnVolumeChanged"/>
+                    <Button Grid.Column="7" Content="✕" FontSize="14" Width="28" Height="28"
+                            Foreground="{DynamicResource TextSecondary}"
+                            Style="{StaticResource GhostButton}" Click="OnMiniCloseClick"/>
+                </Grid>
+
+                <!-- Невидимые ручки изменения размера по краям -->
+                <Thumb Width="12" HorizontalAlignment="Left" Cursor="SizeWE" DragDelta="OnMiniResizeLeft">
+                    <Thumb.Template>
+                        <ControlTemplate TargetType="Thumb">
+                            <Border Background="Transparent"/>
+                        </ControlTemplate>
+                    </Thumb.Template>
+                </Thumb>
+                <Thumb Width="12" HorizontalAlignment="Right" Cursor="SizeWE" DragDelta="OnMiniResizeRight">
+                    <Thumb.Template>
+                        <ControlTemplate TargetType="Thumb">
+                            <Border Background="Transparent"/>
+                        </ControlTemplate>
+                    </Thumb.Template>
+                </Thumb>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

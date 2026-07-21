@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "HOcpaEKZ72I=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Egorka\\Downloads\\AddictionTune-CSharp-v5\\AddictionTune-CSharp\\AddictionTune\\AddictionTune.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Egorka\\.nuget\\packages\\libvlcsharp\\3.10.0\\libvlcsharp.3.10.0.nupkg.sha512",
+    "C:\\Users\\Egorka\\.nuget\\packages\\videolan.libvlc.windows\\3.0.23.1\\videolan.libvlc.windows.3.0.23.1.nupkg.sha512",
+    "C:\\Users\\Egorka\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.29\\microsoft.netcore.app.runtime.win-x64.8.0.29.nupkg.sha512",
+    "C:\\Users\\Egorka\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.29\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.29.nupkg.sha512",
+    "C:\\Users\\Egorka\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.29\\microsoft.aspnetcore.app.runtime.win-x64.8.0.29.nupkg.sha512"
+  ],
+  "logs": []
+}

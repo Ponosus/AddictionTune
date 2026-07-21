@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>AddictionTune</AssemblyName>
+    <RootNamespace>AddictionTune</RootNamespace>
+    <ApplicationManifest></ApplicationManifest>
+    <!-- Иконка EXE-файла -->
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Картинки, вшитые в приложение -->
+    <Resource Include="Assets\icon.ico" />
+    <Resource Include="Assets\github.png" />
+    <Resource Include="Assets\github-white.png" />
+    <Resource Include="Assets\telegram.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- LibVLCSharp — C#-обёртка над libvlc -->
+    <PackageReference Include="LibVLCSharp" Version="3.*" />
+    <!-- Сам бинарник libvlc для Windows — VLC устанавливать НЕ нужно -->
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Если положить yt-dlp.exe рядом с .csproj, он автоматически попадёт в сборку -->
+    <None Include="yt-dlp.exe" Condition="Exists('yt-dlp.exe')" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
