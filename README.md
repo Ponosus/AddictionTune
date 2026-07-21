@@ -40,3 +40,35 @@ For many neurodivergent people, the hardest part of listening to music is *choos
 ## Building from source
 
 Requirements: **Windows 10/11**, **.NET 8 SDK**.
+
+​
+git clone https://github.com/Ponosus/AddictionTune.git
+cd AddictionTune/AddictionTune
+dotnet publish -c Release -r win-x64 --self-contained true -o publish
+
+The `publish` folder will contain `AddictionTune.exe` with everything bundled — the .NET runtime, LibVLC binaries, and `yt-dlp.exe`. Copy the folder anywhere and run.
+
+> **Note:** `yt-dlp.exe` ships with the repository and is copied to the output automatically. If you ever need to refresh it manually, grab the latest from [yt-dlp releases](https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe) and drop it next to the `.csproj`.
+
+## Project structure
+
+​
+AddictionTune/
+├── AddictionTune.csproj
+├── App.xaml / App.xaml.cs        # theme management
+├── MainWindow.xaml(.cs)          # all pages, player, mini-player
+├── Models/                       # Track, Preset
+├── Services/                     # AudioEngine, YtDlpService, UpdateChecker,
+│                                 # Localization, ConfigStore
+├── Themes/                       # Dark / Light dictionaries, control styles
+├── Assets/                       # icons
+└── yt-dlp.exe                    # bundled stream resolver
+
+## Author
+
+Made by **bublik (Ponosus)**
+
+- GitHub: [github.com/Ponosus](https://github.com/Ponosus/)
+- Telegram: [@VestronVulture](https://t.me/VestronVulture)
+
+Enjoy! 🎧
