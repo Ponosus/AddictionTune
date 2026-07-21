@@ -64,8 +64,6 @@ AddictionTune/
 
 ├── Services/                     # AudioEngine, YtDlpService, UpdateChecker,
 
-│                                 # Localization, ConfigStore
-
 ├── Themes/                       # Dark / Light dictionaries, control styles
 
 ├── Assets/                       # icons
