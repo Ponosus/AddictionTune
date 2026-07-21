@@ -41,10 +41,9 @@ For many neurodivergent people, the hardest part of listening to music is *choos
 
 Requirements: **Windows 10/11**, **.NET 8 SDK**.
 
-​
 git clone https://github.com/Ponosus/AddictionTune.git
 
-cd AddictionTune/AddictionTune
+cd AddictionTune
 
 dotnet publish -c Release -r win-x64 --self-contained true -o publish
 
