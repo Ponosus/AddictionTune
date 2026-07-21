@@ -54,6 +54,7 @@ The `publish` folder will contain `AddictionTune.exe` with everything bundled �
 
 ​
 AddictionTune/
+
 ├── AddictionTune.csproj
 
 ├── App.xaml / App.xaml.cs        # theme management
