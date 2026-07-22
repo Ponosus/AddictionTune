@@ -1,5 +1,7 @@
 # AddictionTune
 
+<img width="1197" height="945" alt="image" src="https://github.com/user-attachments/assets/56af253f-5709-4faa-8845-f1bccd059bdb" />
+
 **AddictionTune** is a minimalist, zero-distraction desktop audio player designed for ADHD and neurodivergent listeners. Instead of endless libraries and playlists, it offers three curated audio atmospheres matched to mental states — press one button and the right sound just plays. No accounts, no ads, no doomscrolling through recommendations.
 
 Built with **C# / WPF (.NET 8)**, **LibVLCSharp**, and **yt-dlp**.
